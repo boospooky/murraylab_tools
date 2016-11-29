@@ -129,7 +129,7 @@ class DestinationPlate():
                 self.name = "Destination[%s]" % DPname
             else:
                 self.name = DPname
-        if DPtype == None or '384' in Dtype:
+        if DPtype == None or '384' in DPtype:
             self.type = "Nunc 384"
             self.rows = 16
             self.cols = 24
