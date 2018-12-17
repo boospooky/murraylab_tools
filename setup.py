@@ -3,12 +3,19 @@ from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
 from os import path
+import sys
 
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
+
+# To parse requirements.txt file
+with open('requirements.txt') as f:
+    install_requires = f.read().splitlines()
+if sys.version_info[0] == 2:
+    install_requires.append("unicodecsv")
 
 setup(
     name='murraylab_tools',
@@ -56,7 +63,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='bioengineering biology laboratory protocols',
+    keywords='bioengineering biology laboratory protocols analysis',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
@@ -70,7 +77,7 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=[],
+    install_requires=install_requires,
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
@@ -81,11 +88,27 @@ setup(
         # 'test': ['coverage'],
     },
 
+    # List dependencies for the setup script to run. These are not installed on
+    # the system where the setup script is being run, but simply downloaded to
+    # the ./.eggs directory if they're not locally available already.
+    setup_requires=[
+        'pytest-runner'
+    ],
+
+    # List dependencies for the test process to run. These, too, are not
+    # installed on the system where the setup script is being run, but simply
+    # downloaded to the ./.eggs directory if they're not locally available
+    # already.
+    tests_require=[
+        'pytest'
+    ],
+
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.
+    # package_dir={'murraylab_tools': 'data'}
     package_data={
-        # 'sample': ['package_data.dat'],
+        'murraylab_tools': ['data/calibration_data.csv'],
     },
 
     # Although 'package_data' is the preferred approach, in some case you may

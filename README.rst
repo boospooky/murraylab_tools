@@ -1,9 +1,18 @@
+.. image:: https://img.shields.io/travis/sclamons/murraylab_tools/master.svg
+   :alt: Testing with TravisCI
+   :target: https://travis-ci.org/sclamons/murraylab_tools/branches
+.. image:: https://img.shields.io/codecov/c/github/sclamons/murraylab_tools/master.svg
+   :alt: TravisCI test coverage
+   :target: https://codecov.io/github/sclamons/murraylab_tools/
+
 Tools for Common Murray Lab Protocols
 =====================================
 
-Code for common tasks in the Murray lab. Currently supported in Python 2.7.
+Code for common tasks in the Murray lab. Currently supported in 3.5. It may also work in Python 2.7 if you are careful to use only ASCII characters.
 
-Install with the following (probably requires sudo): pip install git+git://github.com/sclamons/murray_echo.git@master
+Install with the following (probably requires sudo): ``pip install git+git://github.com/sclamons/murraylab_tools.git@master``
+
+To update, run (also with superuser privilege): ``pip install --upgrade --no-deps git+git://github.com/sclamons/murraylab_tools.git@master``
 
 Currently includes the following subpackages:
 
@@ -16,9 +25,16 @@ Code to produce Echo source plate setup instructions and picklists for one of th
 * A 2-dimensional dilution series, in TX-TL.
 * Association of one or more substances on one or more source plates (not in TX-TL)
 
-See the example usage ipython notebook for usage details.
+For details, see the "Echo Setup Usage Examples" ipython notebook under "examples".
 
 biotek: Tidying and Analysis of Biotek Plate Reader Data
 ========================================================
 
 Code for converting raw excel/CSV data from a Biotek plate reader into tidy format.
+
+Also contains convenience functions for analysis of Biotek timecourse data:
+
+* Background subtraction
+* Endpoint averaging
+
+For details, see the "Biotek Analysis Usage Examples" ipython notebook under "examples".
